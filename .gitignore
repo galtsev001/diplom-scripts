@@ -1,0 +1,4 @@
+.terraform/
+inventory/
+kubespray/
+.terraform.lock.hcl

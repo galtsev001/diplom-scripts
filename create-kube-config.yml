@@ -1,0 +1,13 @@
+- hosts: cp1
+  gather_facts: yes
+  tasks:
+    - name: Copy file with owner and permissions
+      copy:
+        src: ./scripts/kube-config-create.sh
+        dest: ~/
+        mode: '0777'
+
+    - name: Create kube config
+      shell: ~/kube-config-create.sh 
+      args:
+        executable: /bin/bash
