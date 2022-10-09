@@ -11,3 +11,7 @@
       shell: ~/kube-config-create.sh 
       args:
         executable: /bin/bash
+
+    - name: Install test app 
+      apt:
+
