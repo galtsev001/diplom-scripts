@@ -9,9 +9,6 @@ all:
     node2:
       ansible_host: ${node_2}
       ansible_user: ${user}
-    node3:
-      ansible_host: ${node_3}
-      ansible_user: ${user}
   children:
     kube_control_plane:
       hosts:
@@ -21,7 +18,6 @@ all:
         cp1:
         node1:
         node2:
-        node3:
     etcd:
       hosts:
         cp1:

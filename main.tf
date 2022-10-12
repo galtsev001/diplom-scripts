@@ -116,32 +116,6 @@ resource "yandex_compute_instance" "node_2" {
 }
 
 
-resource "yandex_compute_instance" "node_3" {
-    name               = "ingress"
-    service_account_id = "${yandex_iam_service_account.terraform-stage.id}"
-      platform_id = "standard-v2"
-      resources {
-        memory = 4
-        cores  = 2
-        core_fraction = 5
-      }
-      boot_disk {
-        mode = "READ_WRITE"
-        initialize_params {
-        image_id = "fd8kdq6d0p8sij7h5qe3"
-        size = 50
-        }
-      }
-      network_interface {
-        subnet_id = "${yandex_vpc_subnet.public.id}"
-        nat = "true"
-        ip_address="192.168.10.23"
-      }
-        metadata = {
-            user-data = "${file("./meta.yml")}"
-      }
-}
-
 resource "yandex_iam_service_account" "terraform-stage" {
   name        = "terraform-stage"
   description = "service account to manage IG"
@@ -153,7 +127,6 @@ output "ansible_inventory" {
     master = "${yandex_compute_instance.master.network_interface.0.nat_ip_address}"
     node_1 = "${yandex_compute_instance.node_1.network_interface.0.nat_ip_address}"
     node_2 = "${yandex_compute_instance.node_2.network_interface.0.nat_ip_address}"
-    node_3 = "${yandex_compute_instance.node_3.network_interface.0.nat_ip_address}"
     user = "galtsev"
   })
 }

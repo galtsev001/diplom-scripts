@@ -1,17 +1,27 @@
 - hosts: cp1
   gather_facts: yes
   tasks:
-    - name: Copy file with owner and permissions
+    # - name: Copy file scripts for kube config
+    #   copy:
+    #     src: ./scripts/kube-config-create.sh
+    #     dest: ~/
+    #     mode: '0777'
+
+    # - name: Create kube config
+    #   shell: ~/kube-config-create.sh 
+    #   args:
+    #     executable: /bin/bash
+      
+    - name: Copy Monitoring system
       copy:
-        src: ./scripts/kube-config-create.sh
+        src: ./monitoring
+        dest: ~/
+        mode: '0777'
+    
+    - name: Copy Manifests
+      copy:
+        src: ./manifests
         dest: ~/
         mode: '0777'
 
-    - name: Create kube config
-      shell: ~/kube-config-create.sh 
-      args:
-        executable: /bin/bash
-
-    - name: Install test app 
-      apt:
 

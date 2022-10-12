@@ -1,0 +1,14 @@
+- hosts: cp1
+  tasks:
+    - name: Show host's ip
+      debug:
+        msg: "{{ ansible_ssh_host }}"
+    - name: Create template file
+      template:
+        src: ./templates/cp_ip_address.j2
+        dest: remote_access.txt
+    - name: Copy file from remote host to local
+      fetch:
+        src: remote_access.txt
+        dest: ./
+        flat: yes

@@ -2,17 +2,14 @@ ansible_inventory = <<EOT
 all:
   hosts:
     cp1:
-      ansible_host: 51.250.76.249
-      ansible_user: galtsev001
+      ansible_host: 178.154.224.95
+      ansible_user: galtsev
     node1:
-      ansible_host: 178.154.207.230
-      ansible_user: galtsev001
+      ansible_host: 84.201.130.48
+      ansible_user: galtsev
     node2:
-      ansible_host: 178.154.207.68
-      ansible_user: galtsev001
-    node3:
-      ansible_host: 178.154.203.63
-      ansible_user: galtsev001
+      ansible_host: 178.154.224.155
+      ansible_user: galtsev
   children:
     kube_control_plane:
       hosts:
@@ -22,7 +19,6 @@ all:
         cp1:
         node1:
         node2:
-        node3:
     etcd:
       hosts:
         cp1:
