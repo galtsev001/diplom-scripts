@@ -2,3 +2,4 @@
 inventory/
 kubespray/
 .terraform.lock.hcl
+.vscode

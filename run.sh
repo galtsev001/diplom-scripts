@@ -27,5 +27,5 @@ ansible-playbook -i ./inventory/inventory.yaml --become get_ip.yml #Генера
 sleep 5
 cat remote_access.txt >> ./inventory/group_vars/k8s_cluster/k8s-cluster.yml
 #Установка Kubernets
-# ansible-playbook -i ./inventory/inventory.yaml  ./kubespray/cluster.yml -b -v
+ansible-playbook -i ./inventory/inventory.yaml  ./kubespray/cluster.yml -b -v
 ansible-playbook -i ./inventory/inventory.yaml create-kube-config.yml 
