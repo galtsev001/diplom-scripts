@@ -8,11 +8,11 @@ terraform {
 
     backend "s3" {
       endpoint   = "storage.yandexcloud.net"
-      bucket     = "galtsev001-bucket"
+      bucket     = "name-bucket"
       region     = "ru-central1-a"
       key        = "terraform.tfstate"
-      access_key = "YCAJEZnBZZln4QivWtiJebkXG"
-      secret_key = "YCMllCTrSURfhIb_bieWxW-ymo4yuLq4fAWEmwo1"
+      access_key = "access_key"
+      secret_key = "secret_key"
 
       skip_region_validation      = true
       skip_credentials_validation = true
@@ -20,9 +20,9 @@ terraform {
 }
 
 provider "yandex" {
-  token     = "AQAAAAACi01KAATuwejtKPJgT0QEqrZpbORoEi4"
-  cloud_id  = "b1g57d4rv7a3m4dmuhro"
-  folder_id = "b1geodooefjvhq6dtnii"
+  token     = "token"
+  cloud_id  = "cloud-id"
+  folder_id = "folder-id"
   zone      = "ru-central1-a"
 }
 
@@ -127,7 +127,7 @@ output "ansible_inventory" {
     master = "${yandex_compute_instance.master.network_interface.0.nat_ip_address}"
     node_1 = "${yandex_compute_instance.node_1.network_interface.0.nat_ip_address}"
     node_2 = "${yandex_compute_instance.node_2.network_interface.0.nat_ip_address}"
-    user = "galtsev"
+    user = "user"
   })
 }
 
